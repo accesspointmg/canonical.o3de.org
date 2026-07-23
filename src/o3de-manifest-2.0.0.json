@@ -39,8 +39,8 @@
                     "description": "The default path for storing O3DE templates. i.e. 'C:/Users/colinb/O3DE/Templates' or '/home/colinb/O3DE/Templates'",
                     "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPath"
                 },
-                "restricteds_path": {
-                    "description": "The default path for storing O3DE restricteds. i.e. 'C:/Users/colinb/O3DE/Restricteds' or '/home/colinb/O3DE/Restricteds'",
+                "overlays_path": {
+                    "description": "The default path for storing O3DE overlays. i.e. 'C:/Users/colinb/O3DE/Overlays' or '/home/colinb/O3DE/Overlays'",
                     "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPath"
                 },
                 "repos_path": {
@@ -57,7 +57,7 @@
                 "projects_path",
                 "gems_path",
                 "templates_path",
-                "restricteds_path",
+                "overlays_path",
                 "repos_path",
                 "third_party_path"
             ]
