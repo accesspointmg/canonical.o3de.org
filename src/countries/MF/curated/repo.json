@@ -1,0 +1,40 @@
+{
+    "$schema": "https://canonical.o3de.org/o3de-repo-2.0.0.json",
+    "$schemaVersion": "2.0.0",
+    "repo": {
+        "name": "org.o3de.repo.mf.curated",
+        "url": "https://canonical.o3de.org/countries/mf/curated/repo.json",
+        "type": "curated"
+    },
+    "version": "1.0.0",
+    "display_name": "Curated Saint Martin (French part).",
+    "summary": "The Open 3D Engine's Curated Objects for Saint Martin (French part).",
+    "additional_info": "These objects are curated by the O3DE team for Saint Martin (French part).",
+    "last_updated": "2025-07-10",
+    "origin": {
+        "name": "The Linux Foundation",
+        "url": "https://www.linuxfoundation.org"
+    },
+    "children": {
+        "engines": [],
+        "projects": [],
+        "gems": [],
+        "templates": [],
+        "repos": [],
+        "overlays": []
+    },
+    "remote": {
+        "engines": [],
+        "projects": [],
+        "gems": [],
+        "templates": [],
+        "repos": [
+            "https://canonical.o3de.org/curated/repo.json"
+        ],
+        "overlays": []
+    },
+    "source_control": {
+        "git": "https://github.com/o3de/canonical.o3de.org.git",
+        "relative_path": "countries/mf/curated"
+    }
+}

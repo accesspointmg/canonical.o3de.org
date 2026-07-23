@@ -1,0 +1,162 @@
+{
+    "$comment": "Mapping from O3DE Repo v1.0.0 schema to v2.0.0 schema",
+    "schemaVersion": {
+        "from": "1.0.0",
+        "to": "2.0.0"
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": "$schemaVersion",
+            "transform": "set_value('2.0.0')"
+        },
+        "$schema": {
+            "from": null,
+            "transform": "set_value('https://canonical.o3de.org/o3de-repo-2.0.0.json')"
+        },
+        "repo.name": {
+            "from": "repo_name",
+            "transform": "to_reverse_domain_format('org.o3de.repo.{value}')"
+        },
+        "repo.version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "repo.display_name": {
+            "from": ["display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "repo.description": {
+            "from": ["description", "summary", "display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "repo.type": {
+            "from": ["repo_type", "type"],
+            "transform": "lowercase()"
+        },
+        "repo.id": {
+            "from": "repo_id",
+            "default": ""
+        },
+        "repo.copyright_year": {
+            "from": "copyright_year",
+            "default": ""
+        },
+        "repo.copyright_text": {
+            "from": ["copyright_text", "copyright"],
+            "transform": "first_non_empty()"
+        },
+        "origin.name": {
+            "from": "origin_name",
+            "transform": "if_exists()"
+        },
+        "origin.url": {
+            "from": ["origin_url", "origin_uri"],
+            "transform": "first_non_empty()"
+        },
+        "licenses": {
+            "from": "license",
+            "transform": "wrap_in_array_if_not_already()"
+        },
+        "children.engines": {
+            "from": "engines",
+            "transform": "copy_array()"
+        },
+        "children.projects": {
+            "from": "projects",
+            "transform": "copy_array()"
+        },
+        "children.gems": {
+            "from": ["gems", "external_subdirectories"],
+            "transform": "merge_arrays()"
+        },
+        "children.templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "children.repos": {
+            "from": "repos",
+            "transform": "copy_array()"
+        },
+        "children.overlays": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "remote.engines": {
+            "from": "engines_path",
+            "transform": "extract_urls()"
+        },
+        "remote.projects": {
+            "from": "projects_path",
+            "transform": "extract_urls()"
+        },
+        "remote.gems": {
+            "from": "gems_path",
+            "transform": "extract_urls()"
+        },
+        "documentation.relative_path": {
+            "from": "documentation_path"
+        },
+        "documentation.url": {
+            "from": ["documentation_url", "documentation_uri"],
+            "transform": "first_non_empty()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "requirements": {
+            "from": "requirements",
+            "default": ""
+        },
+        "downloads": {
+            "from": ["download_source_uri", "download_lfs_uri", "download_targz_uri", "download_lfs_targz_uri"],
+            "transform": "create_downloads_array()"
+        },
+        "downloads[].source": {
+            "from": "download_source_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "downloads[].lfs": {
+            "from": "download_lfs_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "source_control.git": {
+            "from": "source_control_uri",
+            "transform": "append_extension('.git', if_missing)"
+        },
+        "source_control.relative_path": {
+            "from": "source_control_path"
+        },
+        "source_control.branch": {
+            "from": "source_control_branch"
+        },
+        "source_control.tag": {
+            "from": "source_control_tag"
+        },
+        "releases": {
+            "from": ["releases", "versions_data"],
+            "transform": "convert_versions_data_to_releases()"
+        }
+    },
+    "removed_fields": [
+        "sha256",
+        "lfs_sha256",
+        "targz_sha256",
+        "lfs_targz_sha256",
+        "last_updated",
+        "repo_uri",
+        "origin"
+    ],
+    "notes": [
+        "Object name now uses reverse-domain format: org.o3de.repo.{name}",
+        "Header fields moved under 'repo' object",
+        "Origin moved to 'origin' object with name, email, url",
+        "Downloads changed from flat fields to 'downloads' array with 'source' and 'lfs' properties",
+        "Source control 'git_uri' renamed to 'git'",
+        "Repos are used to organize and distribute collections of O3DE objects"
+    ]
+}

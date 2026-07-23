@@ -1,0 +1,148 @@
+{
+    "$comment": "Mapping from O3DE Template v0.0.0 (schemaless) to v1.0.0 schema",
+    "schemaVersion": {
+        "from": "0.0.0",
+        "to": "1.0.0"
+    },
+    "notes": {
+        "description": "v0.0.0 is the original schemaless format (no $schemaVersion field). v1.0.0 added explicit schema versioning and versions_data for release tracking.",
+        "dropped_in_v2": ["versions_data is replaced by releases in v2.0.0"]
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": null,
+            "transform": "set_value('1.0.0')",
+            "notes": "Added in v1.0.0 - v0.0.0 had no schema version field"
+        },
+        "template_name": {
+            "from": "template_name",
+            "transform": "copy()"
+        },
+        "version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "display_name": {
+            "from": ["display_name", "template_name"],
+            "transform": "first_non_empty()"
+        },
+        "summary": {
+            "from": "summary",
+            "transform": "copy()"
+        },
+        "origin": {
+            "from": "origin",
+            "transform": "copy()",
+            "notes": "In v0/v1, origin was often conflated as a display name. In v2.0.0, this becomes the author/owner structure"
+        },
+        "origin_url": {
+            "from": "origin_url",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes origin.url"
+        },
+        "license": {
+            "from": "license",
+            "transform": "copy()"
+        },
+        "repo_uri": {
+            "from": "repo_uri",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes source_control.git"
+        },
+        "icon_path": {
+            "from": "icon_path",
+            "transform": "copy()"
+        },
+        "documentation_url": {
+            "from": "documentation_url",
+            "transform": "copy()"
+        },
+        "copyFiles": {
+            "from": "copyFiles",
+            "transform": "copy_array()",
+            "notes": "Template-specific field for files to copy during instantiation"
+        },
+        "createDirectories": {
+            "from": "createDirectories",
+            "transform": "copy_array()",
+            "notes": "Template-specific field for directories to create"
+        },
+        "gems": {
+            "from": "gems",
+            "transform": "copy_array()"
+        },
+        "gem_names": {
+            "from": "gem_names",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.gems"
+        },
+        "external_subdirectories": {
+            "from": "external_subdirectories",
+            "transform": "copy_array()"
+        },
+        "templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "restricteds": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "compatible_engines": {
+            "from": "compatible_engines",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.engines"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "transform": "copy_array()"
+        },
+        "versions_data": {
+            "from": null,
+            "transform": "create_empty_array()",
+            "notes": "Added in v1.0.0 for tracking multiple versions. Each entry can have: version, download_source_uri, download_lfs_uri, sha256, compatible_engines, source_control_*. Replaced by releases in v2.0.0"
+        },
+        "download_source_uri": {
+            "from": "download_source_uri",
+            "transform": "copy()",
+            "notes": "Non-LFS download URL. In v2.0.0, becomes downloads[].source"
+        },
+        "download_lfs_uri": {
+            "from": "download_lfs_uri",
+            "transform": "copy()",
+            "notes": "LFS download URL. In v2.0.0, becomes downloads[].lfs"
+        },
+        "sha256": {
+            "from": "sha256",
+            "transform": "copy()"
+        },
+        "source_control_uri": {
+            "from": "source_control_uri",
+            "transform": "copy()",
+            "notes": "In v2.0.0, becomes source_control.git (with .git appended if missing)"
+        },
+        "source_control_path": {
+            "from": "source_control_path",
+            "transform": "copy()",
+            "notes": "In v2.0.0, becomes source_control.relative_path"
+        },
+        "source_control_branch": {
+            "from": "source_control_branch",
+            "transform": "copy()",
+            "notes": "In v2.0.0, becomes source_control.branch"
+        },
+        "source_control_tag": {
+            "from": "source_control_tag",
+            "transform": "copy()",
+            "notes": "In v2.0.0, becomes source_control.tag"
+        }
+    }
+}

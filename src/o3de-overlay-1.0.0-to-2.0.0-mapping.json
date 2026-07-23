@@ -1,0 +1,169 @@
+{
+    "$comment": "Mapping from O3DE Overlay v1.0.0 schema to v2.0.0 schema",
+    "schemaVersion": {
+        "from": "1.0.0",
+        "to": "2.0.0"
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": "$schemaVersion",
+            "transform": "set_value('2.0.0')"
+        },
+        "$schema": {
+            "from": null,
+            "transform": "set_value('https://canonical.o3de.org/o3de-overlay-2.0.0.json')"
+        },
+        "overlay.name": {
+            "from": "restricted_name",
+            "transform": "to_reverse_domain_format('org.o3de.overlay.{value}')"
+        },
+        "overlay.version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "overlay.display_name": {
+            "from": ["display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "overlay.description": {
+            "from": ["description", "summary", "display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "overlay.type": {
+            "from": ["restricted_type", "type"],
+            "transform": "lowercase()"
+        },
+        "overlay.id": {
+            "from": "restricted_id",
+            "default": ""
+        },
+        "overlay.copyright_year": {
+            "from": "copyright_year",
+            "default": ""
+        },
+        "overlay.copyright_text": {
+            "from": ["copyright_text", "copyright"],
+            "transform": "first_non_empty()"
+        },
+        "extends": {
+            "from": "extends",
+            "transform": "to_reverse_domain_format_with_version()",
+            "notes": "Reference to the object this overlay extends"
+        },
+        "precedence": {
+            "from": "precedence",
+            "default": 0
+        },
+        "origin.name": {
+            "from": "origin_name",
+            "transform": "if_exists()"
+        },
+        "origin.url": {
+            "from": ["origin_url", "origin_uri"],
+            "transform": "first_non_empty()"
+        },
+        "licenses": {
+            "from": "license",
+            "transform": "wrap_in_array_if_not_already()"
+        },
+        "children.gems": {
+            "from": ["gems", "external_subdirectories"],
+            "transform": "merge_arrays()"
+        },
+        "children.templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "children.overlays": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "dependent.gems": {
+            "from": ["gem_names", "dependencies"],
+            "transform": "convert_to_reverse_domain_with_version('org.o3de.gem.{value}>=0.0.0')"
+        },
+        "dependent.engines": {
+            "from": "compatible_engines",
+            "transform": "convert_to_reverse_domain_with_version()"
+        },
+        "documentation.relative_path": {
+            "from": "documentation_path"
+        },
+        "documentation.url": {
+            "from": ["documentation_url", "documentation_uri"],
+            "transform": "first_non_empty()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "default": [],
+            "notes": "overlay objects default to empty platforms list"
+        },
+        "platform_maps": {
+            "from": "platform_maps",
+            "transform": "copy_array()"
+        },
+        "platform_wart_maps": {
+            "from": "platform_wart_maps",
+            "transform": "copy_array()"
+        },
+        "requirements": {
+            "from": "requirements",
+            "default": ""
+        },
+        "downloads": {
+            "from": ["download_source_uri", "download_lfs_uri", "download_targz_uri", "download_lfs_targz_uri"],
+            "transform": "create_downloads_array()"
+        },
+        "downloads[].source": {
+            "from": "download_source_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "downloads[].lfs": {
+            "from": "download_lfs_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "source_control.git": {
+            "from": "source_control_uri",
+            "transform": "append_extension('.git', if_missing)"
+        },
+        "source_control.relative_path": {
+            "from": "source_control_path"
+        },
+        "source_control.branch": {
+            "from": "source_control_branch"
+        },
+        "source_control.tag": {
+            "from": "source_control_tag"
+        },
+        "releases": {
+            "from": ["releases", "versions_data"],
+            "transform": "convert_versions_data_to_releases()"
+        }
+    },
+    "removed_fields": [
+        "sha256",
+        "lfs_sha256",
+        "targz_sha256",
+        "lfs_targz_sha256",
+        "last_updated",
+        "restricted_uri",
+        "origin"
+    ],
+    "notes": [
+        "Object name now uses reverse-domain format: org.o3de.overlay.{value}",
+        "Header fields moved under 'overlay' object",
+        "Origin moved to 'origin' object with name, email, url",
+        "Downloads changed from flat fields to 'downloads' array with 'source' and 'lfs' properties",
+        "Source control 'git_uri' renamed to 'git'",
+        "overlay objects extend other objects with platform-specific overrides",
+        "Platforms default to empty array for overlay objects"
+    ]
+}

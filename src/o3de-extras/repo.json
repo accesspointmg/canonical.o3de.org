@@ -1,0 +1,64 @@
+{
+    "$schema": "https://canonical.o3de.org/o3de-repo-2.0.0.json",
+    "$schemaVersion": "2.0.0",
+    "repo": {
+        "name": "org.o3de.repo.canonical.o3de-extras",
+        "url": "https://canonical.o3de.org/o3de-extras/repo.json"
+    },
+    "version": "1.0.0",
+    "summary": "The Open 3D Engine's canonical o3de-extras repo.",
+    "additional_info": "Extras gems, projects, and templates for O3DE. See the README.md at the root of this repository for more information",
+    "last_updated": "2025-4-25",
+    "origin": {
+        "name": "Linux Foundation",
+        "url": "https://www.linuxfoundation.org"
+    },
+    "children": {
+        "engines": [
+        ],
+        "projects": [
+            "Projects/OpenXRTest"
+        ],
+        "gems": [
+            "Gems/AudioEngineWWise",
+            "Gems/AzQtComponentsForPython",
+            "Gems/MachineLearning",
+            "Gems/OpenXRVk",
+            "Gems/ProteusRobot",
+            "Gems/ROS2",
+            "Gems/RosRobotSample",
+            "Gems/WarehouseAssets",
+            "Gems/WarehouseAutomation",
+            "Gems/WarehouseSample",
+            "Gems/XR"
+        ],
+        "templates": [
+            "Templates/Multiplayer",
+            "Templates/Ros2FleetRobotTemplate",
+            "Templates/Ros2ProjectTemplate",
+            "Templates/Ros2RoboticManipulationTemplate"
+        ],
+        "repos": [
+        ],
+        "overlays": [
+        ]
+    },
+    "remote": {
+        "engines": [
+        ],
+        "projects": [
+        ],
+        "gems": [
+        ],
+        "templates": [
+        ],
+        "repos": [
+        ],
+        "overlays": [
+        ]
+    },
+    "source_control": {
+        "git": "https://github.com/o3de/o3de-extras.git"
+    }
+}
+

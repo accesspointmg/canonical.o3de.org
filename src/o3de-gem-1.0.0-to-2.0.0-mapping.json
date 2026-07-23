@@ -1,0 +1,189 @@
+{
+    "$comment": "Mapping from O3DE Gem v1.0.0 schema to v2.0.0 schema",
+    "schemaVersion": {
+        "from": "1.0.0",
+        "to": "2.0.0"
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": "$schemaVersion",
+            "transform": "set_value('2.0.0')"
+        },
+        "$schema": {
+            "from": null,
+            "transform": "set_value('https://canonical.o3de.org/o3de-gem-2.0.0.json')"
+        },
+        "gem.name": {
+            "from": "gem_name",
+            "transform": "to_reverse_domain_format('org.o3de.gem.{value}')"
+        },
+        "gem.version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "gem.display_name": {
+            "from": ["display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "gem.description": {
+            "from": ["description", "summary", "display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "gem.type": {
+            "from": ["gem_type", "type"],
+            "transform": "lowercase()"
+        },
+        "gem.id": {
+            "from": "gem_id",
+            "default": ""
+        },
+        "gem.copyright_year": {
+            "from": "copyright_year",
+            "default": ""
+        },
+        "gem.copyright_text": {
+            "from": ["copyright_text", "copyright"],
+            "transform": "first_non_empty()"
+        },
+        "origin.name": {
+            "from": "origin_name",
+            "transform": "if_exists()"
+        },
+        "origin.url": {
+            "from": ["origin_url", "origin_uri"],
+            "transform": "first_non_empty()"
+        },
+        "licenses": {
+            "from": "license",
+            "transform": "wrap_in_array_if_not_already()"
+        },
+        "children.gems": {
+            "from": ["gems", "external_subdirectories"],
+            "transform": "merge_arrays()"
+        },
+        "children.templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "children.overlays": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "dependent.gems": {
+            "from": ["gem_names", "dependencies"],
+            "transform": "convert_to_reverse_domain_with_version('org.o3de.gem.{value}>=0.0.0')"
+        },
+        "dependent.engines": {
+            "from": "compatible_engines",
+            "transform": "convert_to_reverse_domain_with_version()"
+        },
+        "icon.relative_path": {
+            "from": "icon_path"
+        },
+        "icon.url": {
+            "from": ["icon_url", "icon_uri"],
+            "transform": "first_non_empty()"
+        },
+        "documentation.relative_path": {
+            "from": "documentation_path"
+        },
+        "documentation.url": {
+            "from": ["documentation_url", "documentation_uri"],
+            "transform": "first_non_empty()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "default": ["Windows", "Linux", "Mac", "iOS", "Android"]
+        },
+        "requirements": {
+            "from": "requirements",
+            "default": ""
+        },
+        "downloads": {
+            "from": ["download_source_uri", "download_lfs_uri", "download_targz_uri", "download_lfs_targz_uri"],
+            "transform": "create_downloads_array()",
+            "notes": [
+                "v1.0.0 had flat fields: download_source_uri, download_lfs_uri, etc.",
+                "v2.0.0 uses 'downloads' array with objects having 'source' and 'lfs' properties"
+            ]
+        },
+        "downloads[].source": {
+            "from": "download_source_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "downloads[].lfs": {
+            "from": "download_lfs_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "source_control.git": {
+            "from": "source_control_uri",
+            "transform": "append_extension('.git', if_missing)",
+            "notes": [
+                "v1.0.0 used 'source_control_uri'",
+                "v2.0.0 uses 'source_control.git' (not 'git_uri')"
+            ]
+        },
+        "source_control.relative_path": {
+            "from": "source_control_path"
+        },
+        "source_control.branch": {
+            "from": "source_control_branch"
+        },
+        "source_control.tag": {
+            "from": "source_control_tag"
+        },
+        "releases": {
+            "from": ["releases", "versions_data"],
+            "transform": "convert_versions_data_to_releases()",
+            "notes": [
+                "v1.0.0 'versions_data' array with nested download/source_control fields",
+                "v2.0.0 'releases' array with 'name', 'downloads' array, 'source_controls' array"
+            ]
+        },
+        "releases[].name": {
+            "from": "versions_data[].version",
+            "notes": "The version becomes the release name"
+        },
+        "releases[].downloads": {
+            "from": ["versions_data[].download_source_uri", "versions_data[].download_lfs_uri"],
+            "transform": "create_downloads_array()"
+        },
+        "releases[].source_controls[].git": {
+            "from": "versions_data[].source_control_uri",
+            "transform": "append_extension('.git', if_missing)"
+        },
+        "releases[].source_controls[].branch": {
+            "from": "versions_data[].source_control_branch"
+        },
+        "releases[].source_controls[].tag": {
+            "from": "versions_data[].source_control_tag"
+        }
+    },
+    "removed_fields": [
+        "sha256",
+        "lfs_sha256",
+        "targz_sha256",
+        "lfs_targz_sha256",
+        "last_updated",
+        "gem_uri",
+        "origin",
+        "modules"
+    ],
+    "notes": [
+        "Object name now uses reverse-domain format: org.o3de.gem.{name}",
+        "Header fields moved under 'gem' object",
+        "Origin moved to 'origin' object with name, email, url",
+        "Downloads changed from flat fields to 'downloads' array with 'source' and 'lfs' properties",
+        "Source control 'git_uri' renamed to 'git'",
+        "Gem dependencies moved to 'dependent.gems' with version specifiers",
+        "external_subdirectories merged into children.gems"
+    ]
+}

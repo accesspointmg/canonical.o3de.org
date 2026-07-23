@@ -1,0 +1,130 @@
+{
+    "$comment": "Mapping from O3DE Engine v0.0.0 (schemaless) to v1.0.0 schema",
+    "schemaVersion": {
+        "from": "0.0.0",
+        "to": "1.0.0"
+    },
+    "notes": {
+        "description": "v0.0.0 is the original schemaless format (no $schemaVersion field). v1.0.0 added explicit schema versioning.",
+        "dropped_in_v2": []
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": null,
+            "transform": "set_value('1.0.0')",
+            "notes": "Added in v1.0.0 - v0.0.0 had no schema version field"
+        },
+        "engine_name": {
+            "from": "engine_name",
+            "transform": "copy()"
+        },
+        "version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "display_name": {
+            "from": ["display_name", "engine_name"],
+            "transform": "first_non_empty()"
+        },
+        "summary": {
+            "from": "summary",
+            "transform": "copy()"
+        },
+        "engine_id": {
+            "from": "engine_id",
+            "transform": "copy()"
+        },
+        "origin": {
+            "from": "origin",
+            "transform": "copy()",
+            "notes": "In v0/v1, origin was often conflated as a display name. In v2.0.0, this becomes the author/owner structure"
+        },
+        "origin_url": {
+            "from": "origin_url",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes origin.url"
+        },
+        "license": {
+            "from": "license",
+            "transform": "copy()"
+        },
+        "api_versions": {
+            "from": "api_versions",
+            "transform": "copy_array()"
+        },
+        "O3DEVersion": {
+            "from": "O3DEVersion",
+            "transform": "copy()"
+        },
+        "O3DEBuildNumber": {
+            "from": "O3DEBuildNumber",
+            "transform": "copy()"
+        },
+        "file_version": {
+            "from": "file_version",
+            "transform": "copy()"
+        },
+        "build": {
+            "from": "build",
+            "transform": "copy()"
+        },
+        "engines": {
+            "from": "engines",
+            "transform": "copy_array()"
+        },
+        "projects": {
+            "from": "projects",
+            "transform": "copy_array()"
+        },
+        "gems": {
+            "from": "gems",
+            "transform": "copy_array()"
+        },
+        "external_subdirectories": {
+            "from": "external_subdirectories",
+            "transform": "copy_array()"
+        },
+        "templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "repos": {
+            "from": "repos",
+            "transform": "copy_array()"
+        },
+        "restricteds": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "gem_names": {
+            "from": "gem_names",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.gems"
+        },
+        "compatible_engines": {
+            "from": "compatible_engines",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.engines"
+        },
+        "icon_path": {
+            "from": "icon_path",
+            "transform": "copy()"
+        },
+        "documentation_url": {
+            "from": "documentation_url",
+            "transform": "copy()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "transform": "copy_array()"
+        }
+    }
+}

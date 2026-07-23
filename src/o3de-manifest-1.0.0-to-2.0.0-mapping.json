@@ -1,0 +1,123 @@
+{
+    "$comment": "Mapping from O3DE Manifest v1.0.0 schema to v2.0.0 schema",
+    "schemaVersion": {
+        "from": "1.0.0",
+        "to": "2.0.0"
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": "$schemaVersion",
+            "transform": "set_value('2.0.0')"
+        },
+        "$schema": {
+            "from": null,
+            "transform": "set_value('https://canonical.o3de.org/o3de-manifest-2.0.0.json')"
+        },
+        "o3de_manifest.name": {
+            "from": "o3de_manifest_name",
+            "transform": "to_reverse_domain_format('me.home.manifest.{value}')",
+            "notes": "Use 'me.home' for non-org manifests, 'org.o3de' for official"
+        },
+        "country.code": {
+            "from": "country.code",
+            "default": "auto_detect()",
+            "notes": "New in v2.0.0 - country code for locale-specific defaults"
+        },
+        "default.engines_path": {
+            "from": "default_engines_folder",
+            "default": "get_user_o3de_engines_path()"
+        },
+        "default.projects_path": {
+            "from": "default_projects_folder",
+            "default": "get_user_o3de_projects_path()"
+        },
+        "default.gems_path": {
+            "from": "default_gems_folder",
+            "default": "get_user_o3de_gems_path()"
+        },
+        "default.templates_path": {
+            "from": "default_templates_folder",
+            "default": "get_user_o3de_templates_path()"
+        },
+        "default.repos_path": {
+            "from": "default_repos_folder",
+            "default": "get_user_o3de_repos_path()"
+        },
+        "default.overlays_path": {
+            "from": ["default_restricted_folder", "default_restricteds_folder"],
+            "default": "get_user_o3de_restricteds_path()",
+            "notes": "v1.0.0 used singular 'default_restricted_folder'"
+        },
+        "default.third_party_path": {
+            "from": "default_third_party_folder",
+            "default": "get_user_o3de_third_party_path()"
+        },
+        "local.engines": {
+            "from": "engines",
+            "transform": "copy_array()",
+            "notes": "Renamed from top-level 'engines' to 'local.engines'"
+        },
+        "local.projects": {
+            "from": "projects",
+            "transform": "copy_array()",
+            "notes": "Renamed from top-level 'projects' to 'local.projects'"
+        },
+        "local.gems": {
+            "from": ["gems", "external_subdirectories"],
+            "transform": "merge_arrays()",
+            "notes": "Renamed from top-level 'gems' to 'local.gems', merged with external_subdirectories"
+        },
+        "local.templates": {
+            "from": "templates",
+            "transform": "copy_array()",
+            "notes": "Renamed from top-level 'templates' to 'local.templates'"
+        },
+        "local.repos": {
+            "from": "repos",
+            "transform": "copy_array()",
+            "notes": "Renamed from top-level 'repos' to 'local.repos'"
+        },
+        "local.overlays": {
+            "from": "restricteds",
+            "transform": "copy_array()",
+            "notes": "Renamed from top-level 'restricteds' to 'local.overlays'"
+        },
+        "remote.engines": {
+            "from": "engines_path",
+            "transform": "extract_remote_urls()",
+            "notes": "Remote engine.json URLs"
+        },
+        "remote.projects": {
+            "from": "projects_path",
+            "transform": "extract_remote_urls()"
+        },
+        "remote.gems": {
+            "from": "gems_path",
+            "transform": "extract_remote_urls()"
+        },
+        "remote.templates": {
+            "from": "templates_path",
+            "transform": "extract_remote_urls()"
+        },
+        "remote.repos": {
+            "from": "repos_path",
+            "transform": "extract_remote_urls()"
+        },
+        "remote.overlays": {
+            "from": "restricteds_path",
+            "transform": "extract_remote_urls()"
+        }
+    },
+    "removed_fields": [
+        "engines_path (when used for defaults)",
+        "last_updated"
+    ],
+    "notes": [
+        "Manifest is significantly restructured in v2.0.0",
+        "Top-level object lists (engines, projects, etc.) moved under 'local' object",
+        "Default folder paths moved under 'default' object with '_path' suffix",
+        "Remote references moved under 'remote' object",
+        "New 'country' object added for locale-specific behavior",
+        "Manifest name uses reverse-domain format: me.home.manifest.{name} or org.o3de.manifest.{name}"
+    ]
+}

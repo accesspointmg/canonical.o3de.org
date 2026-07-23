@@ -1,0 +1,105 @@
+{
+    "$comment": "Mapping from O3DE Overlay v0.0.0 (schemaless) to v1.0.0 schema",
+    "schemaVersion": {
+        "from": "0.0.0",
+        "to": "1.0.0"
+    },
+    "notes": {
+        "description": "v0.0.0 is the original schemaless format (no $schemaVersion field). v1.0.0 added explicit schema versioning. overlay objects contain platform-specific overrides for other O3DE objects.",
+        "dropped_in_v2": []
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": null,
+            "transform": "set_value('1.0.0')",
+            "notes": "Added in v1.0.0 - v0.0.0 had no schema version field"
+        },
+        "restricted_name": {
+            "from": "restricted_name",
+            "transform": "copy()"
+        },
+        "version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "display_name": {
+            "from": ["display_name", "restricted_name"],
+            "transform": "first_non_empty()"
+        },
+        "summary": {
+            "from": "summary",
+            "transform": "copy()"
+        },
+        "extends": {
+            "from": "extends",
+            "transform": "copy()",
+            "notes": "Reference to the object this overlay extends. In v2.0.0, uses reverse domain format with version"
+        },
+        "precedence": {
+            "from": "precedence",
+            "default": 0,
+            "notes": "Priority order when multiple overlay objects apply"
+        },
+        "origin": {
+            "from": "origin",
+            "transform": "copy()",
+            "notes": "In v0/v1, origin was often conflated as a display name. In v2.0.0, this becomes the author/owner structure"
+        },
+        "origin_url": {
+            "from": "origin_url",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes origin.url"
+        },
+        "license": {
+            "from": "license",
+            "transform": "copy()"
+        },
+        "gems": {
+            "from": "gems",
+            "transform": "copy_array()"
+        },
+        "gem_names": {
+            "from": "gem_names",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.gems"
+        },
+        "external_subdirectories": {
+            "from": "external_subdirectories",
+            "transform": "copy_array()"
+        },
+        "templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "restricteds": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "compatible_engines": {
+            "from": "compatible_engines",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes dependent.engines"
+        },
+        "documentation_url": {
+            "from": "documentation_url",
+            "transform": "copy()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "transform": "copy_array()"
+        },
+        "platform_maps": {
+            "from": "platform_maps",
+            "transform": "copy()",
+            "notes": "Platform-specific mappings for overlay content"
+        }
+    }
+}

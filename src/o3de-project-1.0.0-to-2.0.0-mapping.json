@@ -1,0 +1,171 @@
+{
+    "$comment": "Mapping from O3DE Project v1.0.0 schema to v2.0.0 schema",
+    "schemaVersion": {
+        "from": "1.0.0",
+        "to": "2.0.0"
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": "$schemaVersion",
+            "transform": "set_value('2.0.0')"
+        },
+        "$schema": {
+            "from": null,
+            "transform": "set_value('https://canonical.o3de.org/o3de-project-2.0.0.json')"
+        },
+        "project.name": {
+            "from": "project_name",
+            "transform": "to_reverse_domain_format('org.o3de.project.{value}')"
+        },
+        "project.version": {
+            "from": "version",
+            "default": "0.0.0"
+        },
+        "project.display_name": {
+            "from": ["display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "project.description": {
+            "from": ["description", "summary", "display_name", "name"],
+            "transform": "first_non_empty()"
+        },
+        "project.type": {
+            "from": ["project_type", "type"],
+            "transform": "lowercase()"
+        },
+        "project.id": {
+            "from": "project_id",
+            "default": ""
+        },
+        "project.copyright_year": {
+            "from": "copyright_year",
+            "default": ""
+        },
+        "project.copyright_text": {
+            "from": ["copyright_text", "copyright"],
+            "transform": "first_non_empty()"
+        },
+        "product_name": {
+            "from": "product_name",
+            "default": ""
+        },
+        "executable_name": {
+            "from": "executable_name",
+            "default": ""
+        },
+        "engine": {
+            "from": "engine",
+            "transform": "to_reverse_domain_format_with_version('org.o3de.engine.{value}')",
+            "notes": "Engine reference is now objectNameAndVersion format"
+        },
+        "origin.name": {
+            "from": "origin_name",
+            "transform": "if_exists()"
+        },
+        "origin.url": {
+            "from": ["origin_url", "origin_uri"],
+            "transform": "first_non_empty()"
+        },
+        "licenses": {
+            "from": "license",
+            "transform": "wrap_in_array_if_not_already()"
+        },
+        "children.gems": {
+            "from": ["gems", "external_subdirectories"],
+            "transform": "merge_arrays()"
+        },
+        "children.templates": {
+            "from": "templates",
+            "transform": "copy_array()"
+        },
+        "children.overlays": {
+            "from": "restricteds",
+            "transform": "copy_array()"
+        },
+        "dependent.gems": {
+            "from": ["gem_names", "dependencies"],
+            "transform": "convert_to_reverse_domain_with_version('org.o3de.gem.{value}>=0.0.0')"
+        },
+        "dependent.engines": {
+            "from": "compatible_engines",
+            "transform": "convert_to_reverse_domain_with_version()"
+        },
+        "icon.relative_path": {
+            "from": "icon_path"
+        },
+        "icon.url": {
+            "from": ["icon_url", "icon_uri"],
+            "transform": "first_non_empty()"
+        },
+        "documentation.relative_path": {
+            "from": "documentation_path"
+        },
+        "documentation.url": {
+            "from": ["documentation_url", "documentation_uri"],
+            "transform": "first_non_empty()"
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        },
+        "platforms": {
+            "from": "platforms",
+            "default": ["Windows", "Linux", "Mac", "iOS", "Android"]
+        },
+        "requirements": {
+            "from": "requirements",
+            "default": ""
+        },
+        "downloads": {
+            "from": ["download_source_uri", "download_lfs_uri", "download_targz_uri", "download_lfs_targz_uri"],
+            "transform": "create_downloads_array()"
+        },
+        "downloads[].source": {
+            "from": "download_source_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "downloads[].lfs": {
+            "from": "download_lfs_uri",
+            "transform": "append_extension('.zip', if_missing)"
+        },
+        "source_control.git": {
+            "from": "source_control_uri",
+            "transform": "append_extension('.git', if_missing)"
+        },
+        "source_control.relative_path": {
+            "from": "source_control_path"
+        },
+        "source_control.branch": {
+            "from": "source_control_branch"
+        },
+        "source_control.tag": {
+            "from": "source_control_tag"
+        },
+        "releases": {
+            "from": ["releases", "versions_data"],
+            "transform": "convert_versions_data_to_releases()"
+        }
+    },
+    "removed_fields": [
+        "sha256",
+        "lfs_sha256",
+        "targz_sha256",
+        "lfs_targz_sha256",
+        "last_updated",
+        "project_uri",
+        "origin"
+    ],
+    "notes": [
+        "Object name now uses reverse-domain format: org.o3de.project.{name}",
+        "Header fields moved under 'project' object",
+        "Origin moved to 'origin' object with name, email, url",
+        "Downloads changed from flat fields to 'downloads' array with 'source' and 'lfs' properties",
+        "Source control 'git_uri' renamed to 'git'",
+        "Engine reference is now objectNameAndVersion format",
+        "external_subdirectories merged into children.gems"
+    ]
+}

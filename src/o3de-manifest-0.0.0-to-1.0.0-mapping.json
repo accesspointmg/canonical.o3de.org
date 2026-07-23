@@ -1,0 +1,112 @@
+{
+    "$comment": "Mapping from O3DE Manifest v0.0.0 (schemaless) to v1.0.0 schema",
+    "schemaVersion": {
+        "from": "0.0.0",
+        "to": "1.0.0"
+    },
+    "notes": {
+        "description": "v0.0.0 is the original schemaless format (no $schemaVersion field). v1.0.0 added explicit schema versioning. The manifest (o3de_manifest.json) is a user-local file that tracks registered O3DE objects.",
+        "dropped_in_v2": []
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": null,
+            "transform": "set_value('1.0.0')",
+            "notes": "Added in v1.0.0 - v0.0.0 had no schema version field"
+        },
+        "o3de_manifest_name": {
+            "from": "o3de_manifest_name",
+            "transform": "copy()"
+        },
+        "default_engines_folder": {
+            "from": "default_engines_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.engines_path"
+        },
+        "default_projects_folder": {
+            "from": "default_projects_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.projects_path"
+        },
+        "default_gems_folder": {
+            "from": "default_gems_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.gems_path"
+        },
+        "default_templates_folder": {
+            "from": "default_templates_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.templates_path"
+        },
+        "default_restricted_folder": {
+            "from": "default_restricted_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.restricteds_path (note: pluralized)"
+        },
+        "default_third_party_folder": {
+            "from": "default_third_party_folder",
+            "transform": "copy()",
+            "notes": "In v2.0.0, this becomes default.third_party_path"
+        },
+        "engines": {
+            "from": "engines",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.engines (full paths to engine.json files)"
+        },
+        "projects": {
+            "from": "projects",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.projects (full paths to project.json files)"
+        },
+        "gems": {
+            "from": "gems",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.gems (full paths to gem.json files)"
+        },
+        "external_subdirectories": {
+            "from": "external_subdirectories",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, merged into local.gems"
+        },
+        "templates": {
+            "from": "templates",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.templates"
+        },
+        "repos": {
+            "from": "repos",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.repos"
+        },
+        "restricteds": {
+            "from": "restricteds",
+            "transform": "copy_array()",
+            "notes": "In v2.0.0, this becomes local.restricteds"
+        },
+        "engines_path": {
+            "from": "engines_path",
+            "transform": "copy_array()",
+            "notes": "Remote engine paths. In v2.0.0, URLs are extracted to remote.engines"
+        },
+        "projects_path": {
+            "from": "projects_path",
+            "transform": "copy_array()"
+        },
+        "gems_path": {
+            "from": "gems_path",
+            "transform": "copy_array()"
+        },
+        "templates_path": {
+            "from": "templates_path",
+            "transform": "copy_array()"
+        },
+        "repos_path": {
+            "from": "repos_path",
+            "transform": "copy_array()"
+        },
+        "restricteds_path": {
+            "from": "restricteds_path",
+            "transform": "copy_array()"
+        }
+    }
+}

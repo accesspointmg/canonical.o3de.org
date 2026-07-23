@@ -1,0 +1,78 @@
+{
+    "$comment": "Mapping from O3DE Repo v0.0.0 (schemaless) to v1.0.0 schema",
+    "schemaVersion": {
+        "from": "0.0.0",
+        "to": "1.0.0"
+    },
+    "notes": {
+        "description": "v0.0.0 is the original schemaless format (no $schemaVersion field). v1.0.0 added explicit schema versioning and introduced the *_data aggregation pattern for embedding child object data.",
+        "dropped_in_v2": [
+            "gems_data - aggregation of child gem data, violates OOP principles",
+            "projects_data - aggregation of child project data, violates OOP principles",
+            "templates_data - aggregation of child template data, violates OOP principles",
+            "engines_data - aggregation of child engine data, violates OOP principles"
+        ],
+        "design_notes": "The *_data fields were an anti-pattern where parent objects described their children. In v2.0.0, each object is self-describing and repos only reference children via paths/URLs."
+    },
+    "mappings": {
+        "$schemaVersion": {
+            "from": null,
+            "transform": "set_value('1.0.0')",
+            "notes": "Added in v1.0.0 - v0.0.0 had no schema version field"
+        },
+        "repo_name": {
+            "from": "repo_name",
+            "transform": "copy()"
+        },
+        "origin": {
+            "from": "origin",
+            "transform": "copy()",
+            "notes": "In v0/v1, origin was often conflated as a display name or short identifier. In v2.0.0, this becomes the author/owner structure"
+        },
+        "repo_uri": {
+            "from": "repo_uri",
+            "transform": "copy()",
+            "notes": "In v0/v1, repo_uri was a raw content URL (e.g., raw.githubusercontent.com). In v2.0.0, this becomes source_control.git"
+        },
+        "summary": {
+            "from": "summary",
+            "transform": "copy()"
+        },
+        "additional_info": {
+            "from": "additional_info",
+            "transform": "copy()"
+        },
+        "last_updated": {
+            "from": "last_updated",
+            "transform": "copy()"
+        },
+        "gems_data": {
+            "from": null,
+            "transform": "create_empty_array()",
+            "notes": "Added in v1.0.0 - aggregates full gem.json data for all gems in the repo. DROPPED in v2.0.0 as it violates OOP by having parent describe children."
+        },
+        "projects_data": {
+            "from": null,
+            "transform": "create_empty_array()",
+            "notes": "Added in v1.0.0 - aggregates full project.json data for all projects in the repo. DROPPED in v2.0.0 as it violates OOP by having parent describe children."
+        },
+        "templates_data": {
+            "from": null,
+            "transform": "create_empty_array()",
+            "notes": "Added in v1.0.0 - aggregates full template.json data for all templates in the repo. DROPPED in v2.0.0 as it violates OOP by having parent describe children."
+        },
+        "engines_data": {
+            "from": null,
+            "transform": "create_empty_array()",
+            "notes": "Added in v1.0.0 - aggregates full engine.json data for all engines in the repo. DROPPED in v2.0.0 as it violates OOP by having parent describe children."
+        },
+        "canonical_tags": {
+            "from": "canonical_tags",
+            "transform": "copy_array()"
+        },
+        "user_tags": {
+            "from": "user_tags",
+            "transform": "copy_array()"
+        }
+    }
+}

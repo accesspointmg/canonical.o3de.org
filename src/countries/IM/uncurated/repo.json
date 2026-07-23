@@ -1,0 +1,40 @@
+{
+    "$schema": "https://canonical.o3de.org/o3de-repo-2.0.0.json",
+    "$schemaVersion": "2.0.0",
+    "repo": {
+        "name": "org.o3de.repo.im.uncurated",
+        "url": "https://canonical.o3de.org/countries/im/uncurated/repo.json",
+        "type": "uncurated"
+    },
+    "version": "1.0.0",
+    "display_name": "Uncurated Isle of Man.",
+    "summary": "The Open 3D Engine's Uncurated Objects for Isle of Man.",
+    "additional_info": "These objects are uncurated by the O3DE team for Isle of Man.",
+    "last_updated": "2025-07-10",
+    "origin": {
+        "name": "The Linux Foundation",
+        "url": "https://www.linuxfoundation.org"
+    },
+    "children": {
+        "engines": [],
+        "projects": [],
+        "gems": [],
+        "templates": [],
+        "repos": [],
+        "overlays": []
+    },
+    "remote": {
+        "engines": [],
+        "projects": [],
+        "gems": [],
+        "templates": [],
+        "repos": [
+            "https://canonical.o3de.org/uncurated/repo.json"
+        ],
+        "overlays": []
+    },
+    "source_control": {
+        "git": "https://github.com/o3de/canonical.o3de.org.git",
+        "relative_path": "countries/im/uncurated"
+    }
+}

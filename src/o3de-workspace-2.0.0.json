@@ -48,15 +48,39 @@
             "enum": ["engine", "project", "gem", "template", "repo", "overlay"]
         },
         "sources": {
-            "description": "Full paths to all source objects resolved into this workspace.",
-            "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPaths"
+            "description": "Categorised source objects resolved into this workspace. Each category maps object names to their absolute local paths. Names are scoped by type, so a gem and a project may share a name without collision.",
+            "type": "object",
+            "properties": {
+                "engines": {
+                    "description": "Engine objects: name → absolute local path.",
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "projects": {
+                    "description": "Project objects: name → absolute local path.",
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "gems": {
+                    "description": "Gem objects: name → absolute local path.",
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "templates": {
+                    "description": "Template objects: name → absolute local path.",
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "overlays": {
+                    "description": "Overlay objects: name → absolute local path.",
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                }
+            },
+            "additionalProperties": false
         },
-        "overlays": {
-            "description": "Full paths to overlay objects applied to this workspace.",
-            "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPaths"
-        },
-        "file_owners": {
-            "description": "Map of relative POSIX file paths in the workspace to the object name that owns that file. When an overlay replaces a file, ownership transfers to the overlay.",
+        "file_links": {
+            "description": "Map of source absolute POSIX paths to workspace-relative POSIX paths. Each entry records a file link from the source object into the workspace directory tree. The owner of a file can be derived by matching the source path against the source roots in the sources field.",
             "type": "object",
             "additionalProperties": {
                 "type": "string"
