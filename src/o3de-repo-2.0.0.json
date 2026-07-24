@@ -45,15 +45,8 @@
             "type": "string",
             "description": "If you have extra instructions for the user, beyond the normal O3DE setup, on how to setup/use this object. i.e. 'You must install XYZ SDK 1.2 to compile this object.', or 'Read Setup.md before compiling."
         },
-        "downloads": {
-            "description": "If this object is available as a zip download such as a release. It can have a source and lfs portion.",
-            "$ref": "./o3de-patterns-2.0.0.json#/definitions/downloads"
-        },
         "source_control": {
             "$ref": "./o3de-patterns-2.0.0.json#/definitions/source_control"
-        },
-        "releases": {
-            "$ref": "./o3de-patterns-2.0.0.json#/definitions/releases"
         }
     },
     "required": [
