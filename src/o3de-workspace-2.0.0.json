@@ -47,6 +47,10 @@
             "type": "string",
             "enum": ["engine", "project", "gem", "template", "repo", "overlay"]
         },
+        "platforms": {
+            "description": "Platform selection used when composing this workspace. Platform-specific overlays are included only if they deliver one of these platforms (family overlays are pulled in via overlay dependencies). Absent means all platforms.",
+            "$ref": "./o3de-patterns-2.0.0.json#/definitions/platforms"
+        },
         "sources": {
             "description": "Categorised source objects resolved into this workspace. Each category maps object names to their absolute local paths. Names are scoped by type, so a gem and a project may share a name without collision.",
             "type": "object",
