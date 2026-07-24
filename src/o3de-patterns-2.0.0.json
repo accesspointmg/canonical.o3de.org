@@ -70,7 +70,7 @@
         },
         "relativePath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)(?!.*//)[^/]{1,63}(?:/[^/]{1,63})*$"
+            "pattern": "^(?!.*//)(?!.*\\\\)(?!.*//)[^/]{1,255}(?:/[^/]{1,255})*$"
         },
         "relativePaths": {
             "type": "array",
@@ -140,7 +140,7 @@
         },
         "relativeZipPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/[^/]+\\.zip$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/[^/]+\\.zip$"
         },
         "relativeZipPaths": {
             "type": "array",
@@ -204,7 +204,7 @@
         },
         "relativeTargzPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/[^/]+\\.tar\\.gz$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/[^/]+\\.tar\\.gz$"
         },
         "relativeTargzPaths": {
             "type": "array",
@@ -639,7 +639,7 @@
         },
         "relativeEngineJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeEngineJsonPaths": {
             "type": "array",
@@ -649,7 +649,7 @@
         },
         "relativeProjectJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeProjectJsonPaths": {
             "type": "array",
@@ -659,7 +659,7 @@
         },
         "relativeGemJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeGemJsonPaths": {
             "type": "array",
@@ -669,7 +669,7 @@
         },
         "relativeTemplateJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeTemplateJsonPaths": {
             "type": "array",
@@ -679,7 +679,7 @@
         },
         "relativeRepoJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeRepoJsonPaths": {
             "type": "array",
@@ -689,7 +689,7 @@
         },
         "relativeOverlayJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,255}(?:/[^/]{1,255})*/overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeOverlayJsonPaths": {
             "type": "array",
