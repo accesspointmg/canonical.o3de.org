@@ -17,8 +17,8 @@
         },
         "objectName": {
             "type": "string",
-            "description": "Reverse-domain naming convention for O3DE objects (domain.organization.type.name). Must start with a reverse domain (e.g., 'com.company', 'org.organization'), followed by the object type, then a descriptive name using lowercase alphanumeric characters and dots for hierarchy. Version numbers and pure numeric segments are not allowed in the name.",
-            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|repo|overlay|manifest)\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*$"
+            "description": "Reverse-domain naming convention for O3DE objects (domain.organization.type.name). Must start with a reverse domain (e.g., 'com.company', 'org.organization'), followed by the object type, then a descriptive name using lowercase alphanumeric characters, underscores, and dots for hierarchy. Version numbers and pure numeric segments are not allowed in the name.",
+            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|repo|overlay|manifest)\\.[a-z0-9_]*[a-z][a-z0-9_]*(?:\\.[a-z0-9_]*[a-z][a-z0-9_]*)*$"
         },
         "objectNames": {
             "type": "array",
@@ -50,7 +50,7 @@
         "objectNameAndVersion": {
             "type": "string",
             "description": "Combines objectName with semantic version constraints. Format: objectName followed by optional version constraint(s). Supports all semantic version operators: ==, >=, >, <=, <, ~=, !=. Multiple constraints can be comma-separated or comma-free. Examples: 'org.o3de.gem.core', 'com.apmg.gem.networking~=1.2.0', 'org.o3de.gem.physics>=1.2.0,<=1.3.0', 'org.o3de.gem.graphics>=1.0.0<2.0.0!=1.5.0', 'org.o3de.gem.network>=1.0.0,<3.0.0,!=1.2.0,!=2.5.0'",
-            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|overlay)\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*(?:(?:,?(?:==|>=|>|<=|<|~=|!=)[0-9]+\\.[0-9]+\\.[0-9]+)+)?$"
+            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|overlay)\\.[a-z0-9_]*[a-z][a-z0-9_]*(?:\\.[a-z0-9_]*[a-z][a-z0-9_]*)*(?:(?:,?(?:==|>=|>|<=|<|~=|!=)[0-9]+\\.[0-9]+\\.[0-9]+)+)?$"
         },
         "objectNameAndVersions": {
             "type": "array",
