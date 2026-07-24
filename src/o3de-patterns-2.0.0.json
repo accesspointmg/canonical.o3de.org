@@ -50,7 +50,7 @@
         "objectNameAndVersion": {
             "type": "string",
             "description": "Combines objectName with semantic version constraints. Format: objectName followed by optional version constraint(s). Supports all semantic version operators: ==, >=, >, <=, <, ~=, !=. Multiple constraints can be comma-separated or comma-free. Examples: 'org.o3de.gem.core', 'com.apmg.gem.networking~=1.2.0', 'org.o3de.gem.physics>=1.2.0,<=1.3.0', 'org.o3de.gem.graphics>=1.0.0<2.0.0!=1.5.0', 'org.o3de.gem.network>=1.0.0,<3.0.0,!=1.2.0,!=2.5.0'",
-            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|repo|overlay|manifest)\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*(?:(?:,?(?:==|>=|>|<=|<|~=|!=)[0-9]+\\.[0-9]+\\.[0-9]+)+)?$"
+            "pattern": "^[a-z]+\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*\\.(gem|engine|project|template|overlay)\\.[a-z0-9]*[a-z][a-z0-9]*(?:\\.[a-z0-9]*[a-z][a-z0-9]*)*(?:(?:,?(?:==|>=|>|<=|<|~=|!=)[0-9]+\\.[0-9]+\\.[0-9]+)+)?$"
         },
         "objectNameAndVersions": {
             "type": "array",
@@ -870,6 +870,7 @@
         },
         "objectNameAndVersionLists": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "engines": {
                     "description": "Engine objects i.e. 'org.o3de.engine.main', 'com.company.engine.custom>=1.2.0', 'org.o3de.engine.main>=1.2.0<=1.3.0'",
@@ -885,10 +886,6 @@
                 },
                 "templates": {
                     "description": "Template objects. i.e. 'org.o3de.template.basic', 'com.company.template.custom>=1.2.0', 'org.o3de.template.advanced>=1.2.0<=1.3.0'",
-                    "$ref": "./o3de-patterns-2.0.0.json#/definitions/objectNameAndVersions"
-                },
-                "repos": {
-                    "description": "Repo objects. i.e. 'org.o3de.repo.official', 'com.company.repo.private>=1.2.0', 'org.o3de.repo.community>=1.2.0<=1.3.0'",
                     "$ref": "./o3de-patterns-2.0.0.json#/definitions/objectNameAndVersions"
                 },
                 "overlays": {
