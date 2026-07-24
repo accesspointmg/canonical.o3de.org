@@ -315,7 +315,7 @@
         },
         "engineJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)engine\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "engineJsonUrls": {
             "type": "array",
@@ -325,7 +325,7 @@
         },
         "fullEngineJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*engine\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullEngineJsonPaths": {
             "type": "array",
@@ -347,7 +347,7 @@
         },
         "fullEngineJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)engine\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*engine\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullEngineJsonPathLinks": {
             "type": "array",
@@ -369,7 +369,7 @@
         },
         "projectJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)project\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "projectJsonUrls": {
             "type": "array",
@@ -379,7 +379,7 @@
         },
         "fullProjectJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*project\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullProjectJsonPaths": {
             "type": "array",
@@ -401,7 +401,7 @@
         },
         "fullProjectJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)project\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*project\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullProjectJsonPathLinks": {
             "type": "array",
@@ -423,7 +423,7 @@
         },
         "gemJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)gem\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "gemJsonUrls": {
             "type": "array",
@@ -433,7 +433,7 @@
         },
         "fullGemJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*gem\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullGemJsonPaths": {
             "type": "array",
@@ -455,7 +455,7 @@
         },
         "fullGemJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)gem\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*gem\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullGemJsonPathLinks": {
             "type": "array",
@@ -477,7 +477,7 @@
         },
         "templateJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)template\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "templateJsonUrls": {
             "type": "array",
@@ -487,7 +487,7 @@
         },
         "fullTemplateJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*template\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullTemplateJsonPaths": {
             "type": "array",
@@ -509,7 +509,7 @@
         },
         "fullTemplateJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)template\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*template\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullTemplateJsonPathLinks": {
             "type": "array",
@@ -531,7 +531,7 @@
         },
         "repoJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)repo\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "repoJsonUrls": {
             "type": "array",
@@ -541,7 +541,7 @@
         },
         "fullRepoJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*repo\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullRepoJsonPaths": {
             "type": "array",
@@ -563,7 +563,7 @@
         },
         "fullRepoJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)repo\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*repo\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullRepoJsonPathLinks": {
             "type": "array",
@@ -585,7 +585,7 @@
         },
         "overlayJsonUrl": {
             "type": "string",
-            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)overlay\\.json$"
+            "pattern": "^(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "overlayJsonUrls": {
             "type": "array",
@@ -595,7 +595,7 @@
         },
         "fullOverlayJsonPath": {
             "type": "string",
-            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*overlay\\.json$"
+            "pattern": "^([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "fullOverlayJsonPaths": {
             "type": "array",
@@ -617,7 +617,7 @@
         },
         "fullOverlayJsonLink": {
             "type": "string",
-            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^./]+/)*)overlay\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*overlay\\.json$)"
+            "pattern": "^(?:(https?|ftps?)://([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}/(?:(?:[^/]+/)*)overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$|([a-zA-Z]:[\\\\/]|/)(?:[^\\\\/:*?\"<>|\\r\\n]+[\\\\/])*overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$)"
         },
         "fullOverlayJsonPathLinks": {
             "type": "array",
@@ -639,7 +639,7 @@
         },
         "relativeEngineJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/engine\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/engine(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeEngineJsonPaths": {
             "type": "array",
@@ -649,7 +649,7 @@
         },
         "relativeProjectJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/project\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/project(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeProjectJsonPaths": {
             "type": "array",
@@ -659,7 +659,7 @@
         },
         "relativeGemJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/gem\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/gem(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeGemJsonPaths": {
             "type": "array",
@@ -669,7 +669,7 @@
         },
         "relativeTemplateJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/template\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/template(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeTemplateJsonPaths": {
             "type": "array",
@@ -679,7 +679,7 @@
         },
         "relativeRepoJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/repo\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/repo(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeRepoJsonPaths": {
             "type": "array",
@@ -689,7 +689,7 @@
         },
         "relativeOverlayJsonPath": {
             "type": "string",
-            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/overlay\\.json$"
+            "pattern": "^(?!.*//)(?!.*\\\\)[^/]{1,63}(?:/[^/]{1,63})*/overlay(\\.[0-9]+-[0-9]+-[0-9]+)?\\.json$"
         },
         "relativeOverlayJsonPaths": {
             "type": "array",
@@ -6163,7 +6163,7 @@
                 "license_identifier": {
                     "type": "string",
                     "description": "The SPDX identifier for the license. i.e. 'Apache-2.0' or the custom license identifier.",
-                    "oneOf": [
+                    "anyOf": [
                         {
                             "enum": [
                                 "0BSD",
