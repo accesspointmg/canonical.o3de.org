@@ -56,6 +56,14 @@
             "type": "string",
             "enum": ["workspace", "object", "off"]
         },
+        "overlay_order": {
+            "description": "Explicit overlay apply order per extended object: base object name → ordered overlay names (first applied first, so later entries win file conflicts). Overrides the overlays' authored precedence for this workspace.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": { "type": "string" }
+            }
+        },
         "sources": {
             "description": "Categorised source objects resolved into this workspace. Each category maps object names to their absolute local paths. Names are scoped by type, so a gem and a project may share a name without collision.",
             "type": "object",
