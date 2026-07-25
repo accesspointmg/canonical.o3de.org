@@ -37,7 +37,9 @@
         "templates": [
         ],
         "repos": [
-            "https://canonical.o3de.org/o3de-extras/repo.json"
+            "https://canonical.o3de.org/o3de-extras/repo.json",
+            "https://raw.githubusercontent.com/accesspointmg/o3de-achievements/2.0.0/repo.json",
+            "https://raw.githubusercontent.com/accesspointmg/o3de-achievementstest/main/repo.2-0-0.json"
         ],
         "overlays": [
         ]        
