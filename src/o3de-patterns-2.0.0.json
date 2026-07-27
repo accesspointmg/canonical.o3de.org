@@ -6,7 +6,7 @@
     "definitions": {
         "$schema": {
             "type": "string",
-            "description": "The schema this O3DE object is using. i.e. 'https://canonical.o3de.org/o3de-manifest-2.0.0.json'",
+            "description": "The schema this O3DE object is using. i.e. 'https://raw.githubusercontent.com/accesspointmg/canonical.o3de.org/main/src/o3de-manifest-2.0.0.json'",
             "pattern": "^(https?):\\/\\/([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}(\\/.*)?$"
         },
         "$schemaVersion": {

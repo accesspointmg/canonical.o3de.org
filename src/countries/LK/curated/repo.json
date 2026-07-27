@@ -1,9 +1,9 @@
 {
-    "$schema": "https://canonical.o3de.org/o3de-repo-2.0.0.json",
+    "$schema": "https://raw.githubusercontent.com/accesspointmg/canonical.o3de.org/main/src/o3de-repo-2.0.0.json",
     "$schemaVersion": "2.0.0",
     "repo": {
         "name": "org.o3de.repo.lk.curated",
-        "url": "https://canonical.o3de.org/countries/lk/curated/repo.json",
+        "url": "https://raw.githubusercontent.com/accesspointmg/canonical.o3de.org/main/src/countries/lk/curated/repo.json",
         "type": "curated"
     },
     "version": "1.0.0",
@@ -29,7 +29,7 @@
         "gems": [],
         "templates": [],
         "repos": [
-            "https://canonical.o3de.org/curated/repo.json"
+            "https://raw.githubusercontent.com/accesspointmg/canonical.o3de.org/main/src/curated/repo.json"
         ],
         "overlays": []
     },

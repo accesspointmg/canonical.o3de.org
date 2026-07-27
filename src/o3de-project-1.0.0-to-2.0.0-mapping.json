@@ -11,7 +11,7 @@
         },
         "$schema": {
             "from": null,
-            "transform": "set_value('https://canonical.o3de.org/o3de-project-2.0.0.json')"
+            "transform": "set_value('https://raw.githubusercontent.com/accesspointmg/canonical.o3de.org/main/src/o3de-project-2.0.0.json')"
         },
         "project.name": {
             "from": "project_name",
